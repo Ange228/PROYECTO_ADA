@@ -1,10 +1,8 @@
-#Análisis de Redes Sociales a Gran Escala
-
 ## Introducción
 
 Este proyecto implementa un sistema completo de análisis de redes sociales capaz de procesar hasta **10 millones de conexiones** de usuarios. Utiliza algoritmos avanzados de detección de comunidades, análisis de grafos y visualización interactiva para extraer insights significativos de grandes datasets de redes sociales.
 
-### 🎯 Características Principales
+### Características Principales
 
 - **Procesamiento masivo**: Manejo eficiente de hasta 10M de conexiones de usuarios
 - **Detección de comunidades**: Implementación del algoritmo Label Propagation
@@ -13,7 +11,7 @@ Este proyecto implementa un sistema completo de análisis de redes sociales capa
 - **Visualización interactiva**: Gráficos dinámicos con Plotly
 - **Optimización de memoria**: Uso de Polars para carga eficiente de datos
 
-## 🏗️ Arquitectura del Sistema
+## Arquitectura del Sistema
 
 ### Estructura de Archivos
 
@@ -27,7 +25,7 @@ red_social/
 └── visualizacion.py        # Visualización de resultados
 ```
 
-## 🔧 Componentes del Sistema
+## Componentes del Sistema
 
 ### 1. Carga de Datos (`CargadorRedSocial`)
 
