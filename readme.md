@@ -12,7 +12,6 @@ Este proyecto implementa un sistema completo de análisis de redes sociales capa
 - **Optimización de memoria**: Uso de Polars para carga eficiente de datos
 
 ## Arquitectura del Sistema
-![Texto alternativo](imagenes/5millonescmd1.png)
 
 ### Estructura de Archivos
 
