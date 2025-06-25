@@ -274,7 +274,7 @@ Modifica el tamaño del subgrafo en `main.py`:
 tamaño_subgrafo = 1000000  # Ajustar según recursos disponibles
 ```
 
-## 📈 Métricas de Rendimiento
+## Métricas de Rendimiento
 
 ### Tiempos de Ejecución (Dataset 10M)
 
@@ -293,7 +293,7 @@ tamaño_subgrafo = 1000000  # Ajustar según recursos disponibles
 - **Eficiente**: O(m log m) para MST donde m = número de aristas
 - **Muestreo inteligente**: Para análisis de caminos en grafos grandes
 
-##Insights del Análisis
+## Insights del Análisis
 
 ### Patrones Encontrados
 
@@ -309,7 +309,7 @@ tamaño_subgrafo = 1000000  # Ajustar según recursos disponibles
 - **Análisis de propagación**: Modelado de difusión de información
 - **Optimización de redes**: Diseño eficiente de infraestructura
 
-## 🛠️ Extensiones Futuras
+## Extensiones Futuras
 
 ### Algoritmos Adicionales
 - **Louvain**: Para mejor modularidad
@@ -326,7 +326,7 @@ tamaño_subgrafo = 1000000  # Ajustar según recursos disponibles
 - **Análisis temporal**: Evolución de comunidades
 - **Grafos 3D**: Visualización tridimensional
 
-##Conclusiones
+## Conclusiones
 
 Este sistema demuestra la capacidad de procesar y analizar redes sociales a gran escala de manera eficiente. La combinación de algoritmos optimizados, estructuras de datos eficientes y visualizaciones interactivas proporciona una herramienta poderosa para el análisis de redes complejas.
 
@@ -344,7 +344,5 @@ La implementación exitosa de este sistema abre posibilidades para análisis má
 ---
 
 **Desarrollado con**: Python, Polars, Plotly, NumPy, Matplotlib, NetworkX
-
-**Licencia**: MIT
 
 **Autores**: [Angelica Valeria Castillo Tovar y Diego Paolo Nova Rosas]
