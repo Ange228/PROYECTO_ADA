@@ -1,3 +1,5 @@
+# Sistema de Análisis de Redes Sociales Masivas
+
 ## Introducción
 
 Este proyecto implementa un sistema completo de análisis de redes sociales capaz de procesar hasta **10 millones de conexiones** de usuarios. Utiliza algoritmos avanzados de detección de comunidades, análisis de grafos y visualización interactiva para extraer insights significativos de grandes datasets de redes sociales.
@@ -132,30 +134,59 @@ Genera visualizaciones interactivas usando **Plotly** para análisis visual de l
 - Proyección geográfica de usuarios
 - Análisis de patrones de conectividad
 
-## 📊 Resultados y Análisis
+##Resultados y Análisis
 
 ### Escalabilidad Probada
 
 El sistema ha sido probado con diferentes tamaños de datasets:
 
 #### 1. Análisis con 1,000 Conexiones
-*Aquí va esta imagen*
+
+![Análisis de 1,000 conexiones](imagenes/mildatos.png)
 
 **Métricas obtenidas:**
 - Tiempo de procesamiento: ~0.1 segundos
 - Comunidades detectadas: 50-100
 - Camino promedio: 2-3 saltos
 
-#### 2. Análisis con 10,000 Conexiones  
-*Aquí va esta imagen*
+Este gráfico muestra el rendimiento del sistema con datasets pequeños. El código optimizado permite procesamiento instantáneo:
+
+```python
+# Optimización para datasets pequeños
+def procesar_red_pequeña(grafo):
+    if len(grafo.nodes()) < 10000:
+        # Procesamiento directo sin muestreo
+        return deteccion_completa(grafo)
+```
+
+#### 2. Análisis con 10,000 Conexiones
+
+![Análisis de 10,000 conexiones](imagenes/diezmildatos.png)
 
 **Métricas obtenidas:**
 - Tiempo de procesamiento: ~1 segundo
 - Comunidades detectadas: 500-800
 - Camino promedio: 3-4 saltos
 
+La visualización muestra como las comunidades empiezan a formar patrones más complejos. El algoritmo de Label Propagation mantiene su eficiencia:
+
+```python
+# Núcleo del algoritmo Label Propagation
+def propagar_labels(self):
+    for nodo in self.grafo.nodes():
+        vecinos = list(self.grafo.neighbors(nodo))
+        if vecinos:
+            # Encuentra el label más común entre vecinos
+            labels_vecinos = [self.labels[v] for v in vecinos]
+            label_mas_comun = max(set(labels_vecinos), key=labels_vecinos.count)
+            self.labels[nodo] = label_mas_comun
+```
+
 #### 3. Análisis con 5,000,000 Conexiones
-*Aquí va esta imagen*
+
+![Análisis de 5,000,000 conexiones](imagenes/cincomillones1.png)
+
+![Detección de comunidades - 5M](imagenes/cincomillones2.png)
 
 **Métricas obtenidas:**
 - Tiempo de procesamiento: ~30-60 segundos
@@ -163,23 +194,52 @@ El sistema ha sido probado con diferentes tamaños de datasets:
 - Camino promedio: 4-6 saltos
 - Eficiencia de memoria: <8GB RAM
 
+Para datasets masivos, el sistema implementa estrategias de muestreo inteligente y optimización de memoria:
+
+```python
+# Manejo eficiente de memoria para datasets masivos
+class CargadorRedSocial:
+    def cargar_conexiones_masivas(self, archivo, chunk_size=100000):
+        grafo = defaultdict(set)
+        
+        # Carga por lotes para evitar sobrecarga de memoria
+        for chunk in pl.read_csv_batched(archivo, batch_size=chunk_size):
+            for fila in chunk.iter_rows():
+                usuario = fila[0]
+                conexiones = fila[1].split(',')
+                grafo[usuario].update(map(int, conexiones))
+        
+        return grafo
+```
+
 ### Visualización de Comunidades por Escala
 
 #### Red Pequeña (1K conexiones)
-*Aquí va esta imagen*
+
+![Red pequeña - detección de comunidades](imagenes/mildatos.png)
+
+En redes pequeñas, cada comunidad es claramente distinguible y el algoritmo converge rápidamente.
 
 #### Red Media (10K conexiones)
-*Aquí va esta imagen*
+
+![Red media - detección de comunidades](imagenes/diezmildatos.png)
+
+Con 10K conexiones, empezamos a ver la formación de mega-comunidades y sub-estructuras jerárquicas.
 
 #### Red Grande (5M conexiones)
-*Aquí va esta imagen*
 
-## 🚀 Instalación y Uso
+![Red grande - visualización general](imagenes/cincomillones1.png)
+
+![Red grande - detección de comunidades](imagenes/cincomillones2.png)
+
+En redes masivas, el sistema revela patrones complejos de conectividad y estructura de comunidades a gran escala.
+
+##Instalación y Uso
 
 ### Requisitos del Sistema
 
 ```bash
-pip install polars matplotlib plotly numpy
+pip install polars matplotlib plotly numpy networkx
 ```
 
 ### Preparación de Datos
@@ -233,7 +293,7 @@ tamaño_subgrafo = 1000000  # Ajustar según recursos disponibles
 - **Eficiente**: O(m log m) para MST donde m = número de aristas
 - **Muestreo inteligente**: Para análisis de caminos en grafos grandes
 
-## 🔍 Insights del Análisis
+##Insights del Análisis
 
 ### Patrones Encontrados
 
@@ -266,7 +326,7 @@ tamaño_subgrafo = 1000000  # Ajustar según recursos disponibles
 - **Análisis temporal**: Evolución de comunidades
 - **Grafos 3D**: Visualización tridimensional
 
-## 📝 Conclusiones
+##Conclusiones
 
 Este sistema demuestra la capacidad de procesar y analizar redes sociales a gran escala de manera eficiente. La combinación de algoritmos optimizados, estructuras de datos eficientes y visualizaciones interactivas proporciona una herramienta poderosa para el análisis de redes complejas.
 
@@ -283,8 +343,8 @@ La implementación exitosa de este sistema abre posibilidades para análisis má
 
 ---
 
-**Desarrollado con**: Python, Polars, Plotly, NumPy, Matplotlib
+**Desarrollado con**: Python, Polars, Plotly, NumPy, Matplotlib, NetworkX
 
 **Licencia**: MIT
 
-**Autor**: [Tu nombre]
+**Autores**: [Angelica Valeria Castillo Tovar y Diego Paolo Nova Rosas]
